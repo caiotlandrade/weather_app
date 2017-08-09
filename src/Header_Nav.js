@@ -51,7 +51,7 @@ class Header extends Component {
 
     return (
       <div className="App">
-        <header className="col-md-3">
+        <header className="">
           <h2>{this.state.city}</h2>
           {header}
           <Nav />
@@ -83,43 +83,3 @@ class Nav extends Component {
 }            
 
 export default Header;
-
-
-// {
-//   "coord":{
-//     "lon":-79.42,
-//     "lat":43.7
-//   },
-//   "weather":
-//     [{
-//       "id":803,
-//       "main":"Clouds",
-//       "description":"broken clouds",
-//       "icon":"04d"
-//     }],
-//   "base":"stations",
-//   "main":{
-//     "temp":24.02,
-//     "pressure":1007,
-//     "humidity":73,
-//     "temp_min":21,
-//     "temp_max":26
-//   },
-//   "visibility":14484,
-//   "wind":{
-//     "speed":6.2,
-//     "deg":180
-//   },
-//   "clouds":{"all":75},
-//   "dt":1501875720,
-//   "sys":{
-//     "type":1,"id":3693,
-//     "message":0.0047,
-//     "country":"CA",
-//     "sunrise":1501841467,
-//     "sunset":1501893327
-//   },
-//   "id":6167865,
-//   "name":"Toronto",
-//   "cod":200
-// }
