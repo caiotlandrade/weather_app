@@ -1,31 +1,30 @@
 import React, { Component } from 'react';
 import {Link} from 'react-router';
-import {Line} from 'react-chartjs-2';
+import {Bar} from 'react-chartjs-2';
 import './App.css';
 
 
-class Temperature extends Component {
-
+class Humidity extends Component {
   render() {
-    let temperatureGraph;
+    let humidityGraph;
     if (Object.keys(this.props.forecastAPI).length === 0) {
-      temperatureGraph = (
+      humidityGraph = (
         <img src="/loading.gif" alt="loading gif" />
       )
     } else {
-      temperatureGraph = (
-        <div>
-          <Line
+      humidityGraph = (
+        <div className="col-md-3">
+          <Bar
             data={{
               labels: this.props.forecastAPI.list.filter((listItem, i) => {
-                return i < 8;
+                return i < 9;
               }).map((listItem, i) => {
                 return listItem.dt_txt;
               }),
               datasets: [{
-                label: 'Temperature in ºC',
+                label: 'Relative humidity in %',
                 data: this.props.forecastAPI.list.map((listItem, i) => {
-                  return listItem.main.temp;
+                  return listItem.main.humidity;
                 }),
                 backgroundColor: 'rgba(255, 99, 132, 0.2)',
               }]
@@ -37,7 +36,7 @@ class Temperature extends Component {
               scales: {
                 yAxes: [{
                   ticks: {
-                    beginAtZero: true,
+                    beginAtZero: true
                   }
                 }]
               },
@@ -48,11 +47,11 @@ class Temperature extends Component {
     }
     return (
       <div>
-        <h2>Temperature for the next 24h</h2>
-        {temperatureGraph}
+        <h2>Humidity for the next 24h</h2>
+        {humidityGraph}
       </div>
     );
   }
 }
 
-export default Temperature;
+export default Humidity;

@@ -8,7 +8,7 @@ class Summary extends Component {
     let data;
     if (Object.keys(this.props.currentAPI).length === 0) {
       data = (
-          <p>Loading data...</p>
+        <img src="/loading.gif" alt="loading gif" />
       )
     } else {
       data = (
@@ -20,8 +20,7 @@ class Summary extends Component {
     }
     return (
       <div>
-        <h2>Hello, Summary!</h2>
-        <h3>Random shit on current weather!</h3>
+        <h2>This is how the weather looks like right now!</h2>
         {console.log(this.props.currentAPI)}
           {data}
       </div>
