@@ -40,7 +40,7 @@ class Header extends Component {
   //    change the state with the new responses
   changeCity(anotherCity) {
     this.setState({
-      city: "Loading data...",
+      city: "",
       currentAPI: {},
       forecastAPI: {}
     });
@@ -83,7 +83,7 @@ class Header extends Component {
               <p>{this.state.currentAPI.main.temp}º C</p>
             </div>
             <div className="col-md-12">
-              <p>{this.state.currentAPI.weather[0].description}</p>
+              <p>{this.state.currentAPI.weather[0].main}</p>
             </div>
           </div>
         </div>
@@ -93,7 +93,7 @@ class Header extends Component {
     return (
       <div className="App">
         <header className="">
-          <div className="row">
+          <div className="row App-header">
             <div className="col-md-4">
               <h2>{this.state.city}</h2>
             </div>
@@ -163,7 +163,7 @@ class Search extends React.Component {
 
 	render () {
 		return (
-			<div className="col-md-4">
+			<div className="col-md-4 search_bar">
 				<form onSubmit={this.handleSubmit}>
 					<div className="input-group">
 						<input className="form-control" 

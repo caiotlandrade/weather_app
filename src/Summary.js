@@ -13,8 +13,11 @@ class Summary extends Component {
     } else {
       data = (
         <div>
-          <p>Minimum: {this.props.currentAPI.main.temp_min}</p>
-          <p>Maximum: {this.props.currentAPI.main.temp_max}</p>
+          <p>Minimum: <strong>{this.props.currentAPI.main.temp_min}</strong></p>
+          <p>Maximum: <strong>{this.props.currentAPI.main.temp_max}</strong></p>
+          <br />
+          <p>Wind speed: <strong>{this.props.currentAPI.wind.speed}</strong></p>
+          <p>Sky description: <strong>{this.props.currentAPI.weather[0].description}</strong></p>
         </div>
       )
     }

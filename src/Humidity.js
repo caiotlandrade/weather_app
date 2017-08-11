@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Moment from 'react-moment';
 import {Link} from 'react-router';
 import {Bar} from 'react-chartjs-2';
 import './App.css';
@@ -13,7 +14,7 @@ class Humidity extends Component {
       )
     } else {
       humidityGraph = (
-        <div className="col-md-3">
+        <div className="col-md-10 align-center">
           <Bar
             data={{
               labels: this.props.forecastAPI.list.filter((listItem, i) => {
@@ -23,7 +24,9 @@ class Humidity extends Component {
               }),
               datasets: [{
                 label: 'Relative humidity in %',
-                data: this.props.forecastAPI.list.map((listItem, i) => {
+                data: this.props.forecastAPI.list.filter((listItem, i) => {
+                  return i < 9;
+                }).map((listItem, i) => {
                   return listItem.main.humidity;
                 }),
                 backgroundColor: 'rgba(255, 99, 132, 0.2)',
@@ -48,6 +51,7 @@ class Humidity extends Component {
     return (
       <div>
         <h2>Humidity for the next 24h</h2>
+        <h5>For some reason Canadians like to talk about that.</h5>
         {humidityGraph}
       </div>
     );

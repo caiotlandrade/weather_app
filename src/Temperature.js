@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Moment from 'react-moment';
 import {Link} from 'react-router';
 import {Line} from 'react-chartjs-2';
 import './App.css';
@@ -14,7 +15,7 @@ class Temperature extends Component {
       )
     } else {
       temperatureGraph = (
-        <div>
+        <div className="col-md-10 align-center">
           <Line
             data={{
               labels: this.props.forecastAPI.list.filter((listItem, i) => {
@@ -24,7 +25,9 @@ class Temperature extends Component {
               }),
               datasets: [{
                 label: 'Temperature in ºC',
-                data: this.props.forecastAPI.list.map((listItem, i) => {
+                data: this.props.forecastAPI.list.filter((listItem, i) => {
+                  return i < 9;
+                }).map((listItem, i) => {
                   return listItem.main.temp;
                 }),
                 backgroundColor: 'rgba(255, 99, 132, 0.2)',
@@ -38,6 +41,12 @@ class Temperature extends Component {
                 yAxes: [{
                   ticks: {
                     beginAtZero: true,
+                  }
+                }],
+                xAxes: [{
+                  ticks: {
+                    beginAtZero: true,
+                    stepSize: 1
                   }
                 }]
               },
